@@ -2,12 +2,29 @@ package ru.netology;
 
 import com.github.javafaker.Faker;
 import lombok.experimental.UtilityClass;
+import org.junit.jupiter.api.BeforeEach;
+import com.github.javafaker.Faker;
+import com.github.javafaker.Address;
+import org.junit.jupiter.api.BeforeEach;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 @UtilityClass
 public class DataGenerator {
+
+    private Faker faker;
+
+    @BeforeEach
+    void setUpAll() {
+        faker = new Faker(new Locale("ru"));
+    }
+
 
     @UtilityClass
     public static class Form {
@@ -20,6 +37,9 @@ public class DataGenerator {
 
     }
 
+    public String generateDate(int days) {
+        return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+    }
 }
 
 
